@@ -8,8 +8,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 /**
+ * Clase principal en donde se ejecutan los metodos que inicializan la interfaz
+ * del tablero de juego.
  *
- * @author PERSONAL
+ * @author Anderson Pillimue
  */
 public class TableroJuego {
 
@@ -20,7 +22,11 @@ public class TableroJuego {
     private char playerTurn = 'X';
     private boolean isEndOfGame = false;
 
-    // Constructor
+    /**
+     * Constructor de la clase Tablero.
+     *
+     * @param infoJuego Recibe la isntancia del objeto InfoJuego.
+     */
     public TableroJuego(InfoJuego infoJuego) {
         this.infoJuego = infoJuego;
         pane = new StackPane();
@@ -31,7 +37,11 @@ public class TableroJuego {
         addAllTiles();
     }
 
-    // Método para añadir nuestras casillas al tablero
+    /**
+     * Método para añadir las casillas de juego al tablero.
+     *
+     * @return void
+     */
     private void addAllTiles() {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
@@ -45,7 +55,11 @@ public class TableroJuego {
         }
     }
 
-    // Método para iniciar un nuevo juego
+    /**
+     * Método para reiniciar o iniciar un nuevo juego. Limpia los campos de las
+     * casillas y asigna un turno por defecto.
+     *
+     */
     public void startNewGame() {
         isEndOfGame = false;
         playerTurn = 'X';
@@ -57,7 +71,9 @@ public class TableroJuego {
         }
     }
 
-    // Método para cambiar de turno
+    /**
+     * Método para cambiar de turno.
+     */
     public void changePlayerTurn() {
         if (playerTurn == 'X') {
             playerTurn = 'O';
@@ -68,17 +84,28 @@ public class TableroJuego {
         infoJuego.updateMessage("Turno para " + playerTurn);
     }
 
-    // Método para obtener el turno
+    /**
+     * Método para obtener un turno.
+     *
+     * @return String Retorna el valor actual de la propiedad que almacena el
+     * turno.
+     */
     public String getPlayerTurn() {
         return String.valueOf(playerTurn);
     }
 
-    // Método getter para el obtener el lienzo del Tablero
+    /**
+     * Método getter para obtener el lienzo del Tablero.
+     *
+     * @return StackPane retorna la instancia del lienzo principal.
+     */
     public StackPane getStackPane() {
         return pane;
     }
 
-    // Método para comprobar ganador
+    /**
+     * Método para comprobar ganador.
+     */
     public void checkForWinner() {
         checkRowsForWinner();
         checkColsForWinner();
@@ -87,7 +114,10 @@ public class TableroJuego {
         checkForStalemate();
     }
 
-    // Método para comprobar filas
+    /**
+     * Método para comprobar las filas de la matriz doble (Casilla[][])
+     *
+     */
     private void checkRowsForWinner() {
         for (int row = 0; row < 3; row++) {
             if (casilla[row][0].getValue().equals(casilla[row][1].getValue())
@@ -100,7 +130,10 @@ public class TableroJuego {
         }
     }
 
-    // Método para comprobar columnas
+    /**
+     * Método para comprobar las columnas de la matriz doble (Casilla[][])
+     *
+     */
     private void checkColsForWinner() {
         if (!isEndOfGame) {
             for (int col = 0; col < 3; col++) {
@@ -115,7 +148,11 @@ public class TableroJuego {
         }
     }
 
-    // Método para comprobar trasnversales de esquina superior izquierda a esquina inferior derecha
+    /**
+     * Método para comprobar trasnversales de esquina superior izquierda a
+     * esquina inferior derecha.
+     *
+     */
     private void checkTopLeftToBottomRightForWinner() {
         if (!isEndOfGame) {
             if (casilla[0][0].getValue().equals(casilla[1][1].getValue())
@@ -128,7 +165,10 @@ public class TableroJuego {
         }
     }
 
-    // Método para comprobar trasnversales de esquina superior derecha a esquina inferior izquierda
+    /**
+     * Método para comprobar trasnversales de esquina superior derecha a esquina
+     * inferior izquierda.
+     */
     private void checkTopRightToBottomLeftForWinner() {
         if (!isEndOfGame) {
             if (casilla[0][2].getValue().equals(casilla[1][1].getValue())
@@ -141,7 +181,9 @@ public class TableroJuego {
         }
     }
 
-    // Método para comprobar empate
+    /**
+     * Método para comprobar empate.
+     */
     private void checkForStalemate() {
         if (!isEndOfGame) {
             for (int row = 0; row < 3; row++) {
@@ -158,14 +200,18 @@ public class TableroJuego {
         }
     }
 
-    // Método para mostrar el ganador
+    /**
+     * Método para mostrar el ganador por pantalla.
+     *
+     * @param winner Recibe una cadena de texto con el nombre del ganador.
+     */
     private void endGame(String winner) {
         isEndOfGame = true;
         infoJuego.updateMessage("Ha ganado: " + winner);
         infoJuego.showStartButton();
     }
 
-    // Clase Casilla
+    
     private class Casilla {
 
         private StackPane pane;

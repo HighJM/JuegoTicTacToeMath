@@ -9,8 +9,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 
 /**
+ * Clase principal en donde se ejecutan los métodos que inicializan la interfaz
+ * gráfica de la información de los jugadores.
  *
- * @author PERSONAL
+ * @author Juan Miguel Parra Rodriguez
  */
 public class InfoJuego {
 
@@ -18,6 +20,9 @@ public class InfoJuego {
     private Label message;
     private Button startGameButton;
 
+    /**
+     * Constructor para la clase InfoJuego.
+     */
     public InfoJuego() {
         pane = new StackPane();
         pane.setMinSize(ConstantesUI.APP_WIDTH, ConstantesUI.INFO_JUEGO_HEIGHT);
@@ -37,22 +42,44 @@ public class InfoJuego {
         pane.getChildren().add(startGameButton);
     }
 
+    /**
+     * Método getter para obtener el lienzo principal de la clase InfoJuego.
+     *
+     * @return StackPane retorna el lienzo principal de la clase InfoJuego.
+     */
     public StackPane getStackPane() {
         return pane;
     }
 
+    /**
+     * Método para actualizar el label que indica el nombre del juego
+     * inicialmente y el turno del jugador.
+     *
+     * @param message
+     */
     public void updateMessage(String message) {
         this.message.setText(message);
     }
 
+    /**
+     * Método para mostrar el botón de inicio de juego.
+     */
     public void showStartButton() {
         startGameButton.setVisible(true);
     }
 
+    /**
+     * Método para ocultar el botón de inicio de juego.
+     */
     public void hideStartButton() {
         startGameButton.setVisible(false);
     }
 
+    /**
+     * Método para asignar un evento al botón de inicio de juego.
+     *
+     * @param onAction retorna la acción de inicio de juego.
+     */
     public void setStartButtonOnAction(EventHandler<ActionEvent> onAction) {
         startGameButton.setOnAction(onAction);
     }

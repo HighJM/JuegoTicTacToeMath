@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 /**
  * Clase principal en donde se ejecutan los metodos que inicializan toda la
  * interfaz gráfica.
+ *
  * @author Anderson Pillimue
  */
 public class JuegoTicTacToe extends Application {
@@ -19,6 +20,7 @@ public class JuegoTicTacToe extends Application {
 
     /**
      * Método propio de JavaFx para inicializar la interfaz gráfica principal.
+     *
      * @param primaryStage recibe un parametro de tipo Stage el cual debe ser
      * ser el lienzo principal.
      */
@@ -37,7 +39,8 @@ public class JuegoTicTacToe extends Application {
 
     /**
      * Método principal para inicializar toda la aplicación.
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
         launch(args);
@@ -45,6 +48,7 @@ public class JuegoTicTacToe extends Application {
 
     /**
      * Método para inicializar el layout principal de la interfaz gráfica.
+     *
      * @param root Recibe el lienzo principal - root.
      */
     private void initLayout(BorderPane root) {
@@ -53,8 +57,9 @@ public class JuegoTicTacToe extends Application {
     }
 
     /**
-     * Método para inicializar el la interfaz gráfica que representa la 
+     * Método para inicializar el la interfaz gráfica que representa la
      * información del juego y boton de inicio del juego.
+     *
      * @param root Recibe el lienzo principal - root.
      */
     private void initInfoJuego(BorderPane root) {
@@ -66,6 +71,7 @@ public class JuegoTicTacToe extends Application {
     /**
      * Método para iniciar un nuevo juego o reiniciar un juego cuando se ha
      * finalizado una partida.
+     *
      * @return EventHandler de tipo ActionEvent.
      */
     private EventHandler<ActionEvent> startNewGame() {
@@ -78,6 +84,7 @@ public class JuegoTicTacToe extends Application {
 
     /**
      * Método para inicializar el tablero de juego.
+     *
      * @param root Recibe el lienzo principal - root.
      */
     private void initTablero(BorderPane root) {

@@ -17,6 +17,7 @@ public class JuegoTicTacToe extends Application {
 
     private InfoJuego infoJuego;
     private TableroJuego tablero;
+    private VentanaPregunta ventanaPregunta;
 
     /**
      * Método propio de JavaFx para inicializar la interfaz gráfica principal.
@@ -90,6 +91,12 @@ public class JuegoTicTacToe extends Application {
     private void initTablero(BorderPane root) {
         tablero = new TableroJuego(infoJuego);
         root.getChildren().add(tablero.getStackPane());
+    }
+    
+    private void initVentanPregunta(BorderPane root){
+        ventanaPregunta = new VentanaPregunta();
+        ventanaPregunta.setStartButtonOnAction(startNewGame());
+        root.getChildren().add(ventanaPregunta.getStackPane());
     }
 
 }

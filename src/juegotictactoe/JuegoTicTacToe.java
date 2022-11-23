@@ -55,6 +55,7 @@ public class JuegoTicTacToe extends Application {
     private void initLayout(BorderPane root) {
         initInfoJuego(root);
         initTablero(root);
+        //initVentanPregunta(root);
     }
 
     /**

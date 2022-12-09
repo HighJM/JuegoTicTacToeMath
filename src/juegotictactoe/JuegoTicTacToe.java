@@ -55,7 +55,7 @@ public class JuegoTicTacToe extends Application {
     private void initLayout(BorderPane root) {
         initInfoJuego(root);
         initTablero(root);
-        //initVentanPregunta(root);
+        initVentanaPregunta(root);
     }
 
     /**
@@ -94,10 +94,20 @@ public class JuegoTicTacToe extends Application {
         root.getChildren().add(tablero.getStackPane());
     }
     
-    private void initVentanPregunta(BorderPane root){
+    private void initVentanaPregunta(BorderPane root){
         ventanaPregunta = new VentanaPregunta();
-        ventanaPregunta.setStartButtonOnAction(startNewGame());
+        ventanaPregunta.checkAns(resAnsw());
+        //ventanaPregunta.setStartButtonOnAction(resAnsw());
         root.getChildren().add(ventanaPregunta.getStackPane());
+    }
+    
+    private EventHandler<ActionEvent> resAnsw(){
+        return (ActionEvent e) -> {
+            if ("3".equals(ventanaPregunta.getAnswer())){
+                ventanaPregunta.updateMessage("Correcto!!");
+            }
+            
+        };
     }
 
 }

@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
@@ -20,15 +21,16 @@ public class VentanaPregunta {
     private StackPane pane;
     private Label message, field;
     private Button submit1, submit2, submit3;
-    private int answer;
+    private String answer = "3";
 
     public VentanaPregunta() {
+        
         pane = new StackPane();
         pane.setMinSize(ConstantesUI.APP_WIDTH, ConstantesUI.INFO_JUEGO_HEIGHT);
         pane.setTranslateX(ConstantesUI.APP_WIDTH / 2);
-        pane.setTranslateY(ConstantesUI.INFO_JUEGO_HEIGHT / 2);
+        pane.setTranslateY(500);
 
-        message = new Label("Pregunta 1");
+        message = new Label("La raíz cuadrada de 9 es: ");
         message.setMinSize(ConstantesUI.APP_WIDTH, ConstantesUI.INFO_JUEGO_HEIGHT);
         message.setFont(Font.font(20));
         message.setAlignment(Pos.CENTER);
@@ -36,23 +38,23 @@ public class VentanaPregunta {
         pane.getChildren().add(message);
 
         // este field debe generar preguntas aleatorias. Crear el método.
-        field = new Label("");
 
         // botones para las multiples respuestas
-        submit1 = new Button("Opción 1");
+        submit1 = new Button("2");
         submit1.setMinSize(135, 30);
-        submit1.setTranslateY(20);
+        submit1.setTranslateY(10);
         pane.getChildren().add(submit1);
         
-        submit2 = new Button("Opción 2");
+        submit2 = new Button("5");
         submit2.setMinSize(135, 30);
-        submit2.setTranslateY(20);
+        submit2.setTranslateY(50);
         pane.getChildren().add(submit2);
         
-        submit3 = new Button("Opción 3");
+        submit3 = new Button("3");
         submit3.setMinSize(135, 30);
-        submit3.setTranslateY(20);
+        submit3.setTranslateY(90);
         pane.getChildren().add(submit3);
+        
     }
 
     /**
@@ -65,6 +67,14 @@ public class VentanaPregunta {
     public StackPane getStackPane() {
         return pane;
     }
+    
+    public Label getMessage() {
+        return message;
+    }
+    
+    public String getAnswer() {
+        return answer;
+    }
 
     /**
      * Método para asignar un evento al botón de inicio de juego.
@@ -72,6 +82,17 @@ public class VentanaPregunta {
      * @param onAction retorna la acción de inicio de juego.
      */
     public void setStartButtonOnAction(EventHandler<ActionEvent> onAction) {
+        
+        //submit3.setOnAction(onAction);
+    }
+    
+    public void checkAns(EventHandler<ActionEvent> onAction) {
         submit1.setOnAction(onAction);
+        submit2.setOnAction(onAction);
+        submit3.setOnAction(onAction);
+    }
+    
+    public void updateMessage(String message) {
+        this.message.setText(message);
     }
 }
